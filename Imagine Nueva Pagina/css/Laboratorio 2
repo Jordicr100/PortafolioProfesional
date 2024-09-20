@@ -1,0 +1,126 @@
+use Estudiante
+go
+select *
+from Inscritos
+select AVG(Nota)
+from Inscritos
+where idEstudiante like '109020483'
+select * 
+from TProfesorxCurso
+--2 
+create function FeValorPromedioNota (@id varchar(10)) returns decimal(5,2)
+as
+begin 
+	declare @promedio decimal(5,2)
+
+	select @promedio =	AVG(Nota) 
+						from Inscritos
+						where idEstudiante like @id
+	return @promedio
+
+end
+--Prueba
+select [dbo].[FeValorPromedioNota]('109020483')
+
+--3
+create view vw_cursosPorEstudiante
+as
+	select e.nombreEstudiante, e.idEstudiante, c.idCurso, c.nombreCurso, i.Nota
+	from TEstudiantes as e
+		inner join Inscritos as i
+			on e.idEstudiante = i.idEstudiante
+		inner join TCurso as c
+			on c.idCurso = i.IdCurso
+
+--Prueba
+select * from vw_cursosPorEstudiante
+select * from Inscritos
+--4
+create procedure PAIngresoProfesorCurso @idProfesor varchar(10), @idCurso1 varchar(10), @idCurso2 varchar(10), @cuatrimestre int
+as
+	begin try
+		begin transaction
+		 declare @cantCursos int
+		 if exists (select * from TProfesorxCurso where @idProfesor = idProfesor)
+			select @cantCursos = COUNT(idProfesor)	
+								  from TProfesorxCurso
+			if @cantCursos < 2
+				if not exists (select * from TProfesorxCurso where @idCurso1 = idCurso)
+					insert into TProfesorxCurso(idCurso, idProfesor, cuatrimestre)
+					values (@idCurso1, @idProfesor, @cuatrimestre)
+				else if not exists (select * from TProfesorxCurso where @idCurso2 = idCurso)
+					insert into TProfesorxCurso(idCurso, idProfesor, cuatrimestre)
+					values (@idCurso2, @idProfesor, @cuatrimestre)
+				else
+		commit transaction
+	end try
+
+	begin catch
+
+		rollback transaction
+		select ERROR_MESSAGE()
+
+	end catch
+--Prueba
+execute PAIngresoProfesorCurso '12333330', 'INF02', 'ING02', 2 
+select *
+from TProfesorxCurso
+--5
+create table TEstudianteAmpliacion (
+	idEstudiante varchar(10) not null,
+	idProfesor varchar(10) not null,
+	idCurso varchar(10) not null
+	constraint TEA_pk primary key(idEstudiante, idProfesor, idCurso)
+)
+alter table TEstudianteAmpliacion
+add foreign key (idEstudiante) references TEstudiantes(idEstudiante)
+
+alter table TEstudianteAmpliacion
+add foreign key (idProfesor) references TProfesor(idProfesor)
+
+alter table TEstudianteAmpliacion
+add foreign key (idCurso) references TCurso(idCurso)
+
+
+--6
+
+alter trigger tr_estudiante_ampliacion on TEstudiantes after insert, update
+as
+	begin try
+
+		begin transaction
+
+		declare @idEstudiante varchar(10)
+		declare @idCurso varchar(10)
+		declare @idProfesor varchar(10)
+		declare @nota  decimal(5,2)
+
+		select @idEstudiante = i.idEstudiante, @nota = ic.Nota, @idCurso = ic.idCurso, @idProfesor = ic.idProfesor
+		from inserted as i, Inscritos as ic 
+
+		if(@nota >= 60 and @nota < 70)
+
+			insert into TEstudianteAmpliacion ([idEstudiante], [idProfesor], [idCurso])
+			values (@idEstudiante, @idProfesor, @idCurso)
+		commit transaction
+
+	end try
+
+
+	begin catch
+
+		rollback transaction
+		select ERROR_MESSAGE()
+
+	end catch
+
+--prueba
+insert into TEstudiantes (idEstudiante, nombreEstudiante, telefonoEstudiante, provinciaEstudiante, correoEstudiante, fechaIngreso)
+values ('115170758', 'ANGELO HERNANDEZ CASCANTE ', '8519-0935', 'Limon', 'AngelHernandez@hotmail.com', CAST(N'2013-01-15' AS Date))
+
+insert into Inscritos (idEstudiante, IdCurso, IdProfesor, Cuatrimestre, Nota)
+values ('115170758', 'INF01', '17755559', 1, 65.00)
+
+select *
+from TEstudianteAmpliacion
+
