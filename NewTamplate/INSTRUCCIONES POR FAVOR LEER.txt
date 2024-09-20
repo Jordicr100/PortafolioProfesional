@@ -1,0 +1,11 @@
+Para que el proyecto funcione correctamente, debera restaurar el backup de la base de datos en su SQLServerManager
+
+Adicionalmente, en el folder Config, se encuentra un archivo con el siguiente texto 
+
+Data Source=[ServerName];Initial Catalog=template;Integrated Security=True
+
+Debera reemplazar el [ServerName] con el nombre de su servidor local de SQL
+
+Ejemplo:
+
+Data Source=Servidor1;Initial Catalog=template;Integrated Security=True

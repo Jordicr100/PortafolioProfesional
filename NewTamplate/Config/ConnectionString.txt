@@ -1,0 +1,1 @@
+Data Source=[ServerName];Initial Catalog=template;Integrated Security=True

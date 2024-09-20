@@ -1,0 +1,399 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+#chatbox {
+    width: 400px;
+    height: 300px;
+}
+
+.header-with-bg {
+    padding-top: 0; /* Eliminamos el espacio superior causado por el padding */
+}
+/* Ajustamos el nav para que se mueva cuando esté desplegado el div */
+nav {
+    position: relative;
+    z-index: 1; /* Aseguramos que el nav esté por debajo del div */
+    transition: transform 0.5s ease;
+    /* Aseguramos que el contenido no se superponga */
+    overflow-x: hidden;
+}
+    nav #layoutDiv {
+        transition: transform 0.5s ease;
+        position: relative;
+        display: flex;
+        background: #222327;
+        padding: 10px 70px;
+        transition: transform 0.5s ease;
+    }
+.expanded  {
+    transform: translateX(200px); /* Ajusta el valor según la cantidad que deseas que se mueva */
+}
+
+nav #layoutDiv a{
+    position: relative;
+    color: #999;
+    text-decoration: none;
+    font-size: 1.3em;
+    z-index: 2;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px;
+    transition: 0.5s;
+}
+.optionSearch ion-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; /* Ajusta esto según tu diseño */
+}
+
+.searchInput {
+    margin: 15px;
+    background: none;
+    border: none;
+    outline: none;
+    max-width: 250px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 9999px;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    color: #fff;
+}
+
+    nav #layoutDiv a.active {
+        color: #222327;
+    }
+
+#indicator {
+    position: absolute;
+    height: 75px;
+    width: 150px;
+    background: #29fd53;
+    z-index: 1;
+    transition: 0.5s;
+    display: none;
+}
+
+    #indicator::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        width: 50px;
+        height: 15px;
+        background: #29fd53;
+        border-radius: 15px;
+        box-shadow: 15px 30px #29fd53, 5px 60px #29fd53, -15px 15px #222327, -10px 45px #222327;
+        transition: 0.5s;
+    }
+
+    #indicator::after {
+        content: '';
+        position: absolute;
+        right: -30px;
+        width: 50px;
+        height: 15px;
+        background: #29fd53;
+        border-radius: 15px;
+        box-shadow: 5px 30px #29fd53, -15px 60px #29fd53, 15px 15px #222327, 10px 45px #222327;
+        transition: 0.5s;
+    }
+
+    #indicator.change::before {
+        left: -10px;
+        box-shadow: -15px 30px #29fd53, -5px 60px #29fd53, -10px 15px #222327, -20px 45px #222327;
+    }
+
+    #indicator.change::after {
+        right: -10px;
+        box-shadow: 10px 30px #29fd53, 20px 60px #29fd53, 15px 15px #222327, 25px 45px #222327;
+    }
+
+
+
+.layoutAction {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+}
+
+    .layoutAction .layoutProfile {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .layoutAction .layoutProfile img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .layoutAction .menu {
+        position: absolute;
+        top: 120px;
+        right: -10px;
+        padding: 10px 20px;
+        background: #fff;
+        width: 200px;
+        box-sizing: 0 5px 25px rgba(0,0,0,0.1);
+        border-radius: 15px;
+        transition: 0.5s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+        .layoutAction .menu.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .layoutAction .menu::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: 28px;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            transform: rotate(45deg);
+        }
+
+        .layoutAction .menu h3 {
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            padding: 20px 0;
+            font-weight: 500;
+            color: #555;
+            line-height: 1.2em;
+        }
+
+            .layoutAction .menu h3 span {
+                font-size: 14px;
+                color: #cecece;
+                font-weight: 400;
+            }
+
+        .layoutAction .menu ul li {
+            list-style: none;
+            padding: 10px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+
+            .layoutAction .menu ul li ion-icon {             
+                margin-right: 10px;
+                opacity: 0.5;
+                transition: 0.5s;
+                font-size:1.9em;
+            }
+
+            .layoutAction .menu ul li:hover ion-icon {
+                opacity: 1;
+            }
+
+            .layoutAction .menu ul li a {
+                display: inline-block;
+                text-decoration: none;
+                color: #555;
+                transition: 0.5s;
+            }
+
+            .layoutAction .menu ul li:hover a {
+                color: cyan;
+            }
+
+
+.navigation {
+    position: fixed;
+    height: 100vh;
+    width: 70px;
+    background: #2b343b;
+    box-shadow: 10px 0 0 #49E4D6;
+    border-left: 10px solid #2b343b;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+    .navigation:hover {
+        width: 200px;
+    }
+
+    .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-left: 5px;
+        padding-top: 40px;
+    }
+
+        .navigation ul li {
+            position: relative;
+            list-style: none;
+            width: 100%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+            .navigation ul li.active {
+                background: #49E4D6;
+            }
+
+            .navigation ul li a {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+                color: #fff;
+            }
+
+            .navigation ul li.active a::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                background: #2b343b;
+                border-radius: 50%;
+                box-shadow: 15px 15px 0 #49E4D6;
+            }
+
+            .navigation ul li.active a::after {
+                content: '';
+                position: absolute;
+                bottom: -30px;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                background: #2b343b;
+                border-radius: 50%;
+                box-shadow: 15px -15px 0 #49E4D6;
+            }
+
+            .navigation ul li a .icon {
+                position: relative;
+                display: block;
+                min-width: 60px;
+                height: 60px;
+                line-height: 70px;
+                text-align: center;
+            }
+
+                .navigation ul li a .icon ion-icon {
+                    position: relative;
+                    font-size: 1.5em;
+                    z-index: 1;
+                }
+
+            .navigation ul li a .title {
+                position: relative;
+                display: block;
+                padding-left: 10px;
+                height: 60px;
+                line-height: 60px;
+                white-space: nowrap;
+            }
+
+
+footer {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 8px;
+}
+
+/* Estilos para hacer el footer responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .social-icons {
+        margin-bottom: 15px;
+    }
+}
+
+
+/* Media Query para pantallas más pequeñas que 768px */
+@media screen and (max-width: 768px) {
+    /* Estilo para el contenedor de la imagen del usuario */
+    .user-profile {
+        margin-left: 0; /* Ajusta el margen izquierdo a 0 para que la imagen esté centrada en pantallas más pequeñas */
+        justify-content: center; /* Centrar el contenido horizontalmente */
+    }
+
+    /* Estilo para el navbar */
+    .navigation {
+        /* Ajusta el tamaño de la barra de navegación para adaptarse a pantallas más pequeñas */
+        height: 60px;
+        padding: 10px;
+    }
+
+        /* Estilo para los ítems del menú en pantallas más pequeñas */
+        .navigation ul {
+            width: 100%;
+            justify-content: space-around;
+        }
+
+            .navigation ul li {
+                width: 60px;
+                height: 60px;
+            }
+
+                .navigation ul li a {
+                    flex-direction: column;
+                }
+
+    /* Ajusta los tamaños y estilos de los elementos del footer en pantallas más pequeñas */
+    .footer {
+        /* ... (Estilos específicos para el footer en pantallas más pequeñas) ... */
+    }
+
+    .iconos li {
+        /* ... (Estilos específicos para los iconos en pantallas más pequeñas) ... */
+    }
+
+    .informacion {
+        /* ... (Estilos específicos para la información en pantallas más pequeñas) ... */
+    }
+}
