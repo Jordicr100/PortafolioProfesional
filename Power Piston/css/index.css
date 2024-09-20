@@ -1,0 +1,154 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.banner1{
+    background-image: url('../img/banner1.jpg');
+    display: flex;
+    align-items: center;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    /*control altura del banner*/
+    height: calc(100vh);
+    background-position: center;
+    background-color: #D5652E;
+    background-blend-mode: multiply;
+    box-shadow: 0px -20px 50px 25px rgba(0,0,0,0.75) inset;
+    font-family: 'Montserrat', sans-serif;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.boton-info{
+    background-color: #D5652E !important;
+    color: #fff;
+}
+.boton-info:hover{
+    background-color: #ff8649 !important;
+    color: #2B3136 !important;
+    transition: 0.3s;
+}
+.flecha-banner{
+    color: #2B3136;
+}
+.flecha-banner:hover{
+    color: #ff8649;
+    padding: 2.6rem;
+    transition: 0.3s;
+}
+.fondo1{
+    background-color: #2B3136 !important;
+}
+.fondo2{
+    background-color: #D74E09;
+}
+.dropdown-menu{
+    background-color: #2B3136 !important;
+    color: #fff !important;
+}
+.dropdown-item{
+    color: #fff !important;
+}
+.dropdown-item:hover{
+    background-color: #D5652E;
+    transition: 0.3s;
+}
+.fondo-nav{
+    background-color: #21262a;
+    box-shadow: 1px 12px 25px 5px rgba(0,0,0,0.75);
+}
+.titulo{
+    font-size: 3.8rem;
+    font-family: 'Lexend Mega', sans-serif;
+}
+.titulo2{
+    font-family: 'Lexend Mega', sans-serif;
+}
+.nav-boton{
+    color: #fff !important;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+.nav-boton:hover{
+    background-color: #D5652E;
+    transition: 0.3s;
+}
+.footer-boton{
+    margin: 6px;
+    color: #fff;
+    text-decoration: none;
+}
+.footer-boton:hover{
+    color: #2B3136;
+    transition: 0.3s;
+}
+.form-boton{
+    background-color: #21262a;
+    border-radius: 10px;
+}
+.form-boton:hover{
+    background-color: #111418;
+}
+.imagen-derecha{
+    box-shadow: 15px 25px 5px 0px rgba(0,0,0,0.75);
+}
+.imagen-izquierda{
+    box-shadow: -15px 25px 5px 0px rgba(0,0,0,0.75);
+}
+.form-estilo{
+    border-radius: 10px;
+    box-shadow: 15px 25px 5px 0px rgba(0,0,0,0.75);
+}
+.map-responsive{
+    overflow:hidden;
+
+    padding-bottom:56.25%;
+
+    position:relative;
+
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+
+    top:0;
+
+    height:100%;
+
+    width:100%;
+
+    position:absolute;
+}
+.video-responsive{
+    overflow:hidden;
+
+    padding-bottom:56.25%;
+
+    position:relative;
+
+    height:0;
+}
+.video-responsive iframe{
+        left:0;
+    
+        top:0;
+    
+        height:100%;
+    
+        width:100%;
+    
+        position:absolute;
+}
+@media (max-width: 567px){
+    .footer-contactos{
+        text-align: center !important;
+    }
+}
+@media (max-width: 992px){
+    .footer-contactos{
+        text-align: center !important;
+    }
+    .imagen-derecha, .imagen-izquierda, .form-estilo{
+        box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.75);
+    }
+}
