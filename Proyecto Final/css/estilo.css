@@ -1,0 +1,127 @@
+.nav_fondo{
+    background-color: #FFD700;
+    /*opacity: 0.5;*/
+}
+.nav_fondo_invert{
+    background-color: white;
+    
+}
+.logo{
+    opacity: 1.0 !;
+}
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+    font-size: 24px;
+}
+
+canvas {
+    display: block;
+}
+form{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+    font-size: 24px;
+}
+#content {
+    padding: 20px;
+}
+p{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; 
+    font-size: 24px;
+    
+}
+h2{
+    font-family: 'Oswald', sans-serif; 
+    font-weight: 700;   
+}
+.titulo {
+    font-family: 'Oswald', sans-serif; 
+    font-weight: 700; 
+    font-size: 72px;
+}
+.fondo{
+    background-image: linear-gradient(to bottom right,  #FFD700,#ffd900, #000000);
+    transition: color .4s ease-in-out, background-color .4s ease-in-out;
+}
+.fondo_invert{
+    background-image: linear-gradient(to bottom right,  #000000,#000000, #FFD700);
+    color: white;
+    transition: color .4s ease-in-out, background-color .4s ease-in-out; 
+}
+.navbar {
+    transition: color 1s ease-in-out; 
+}
+.card {
+    transition: color 1s ease-in-out;
+}
+
+.fondo_invert .navbar-nav .nav-link {
+    color: white !important; 
+}
+
+.fondo_invert .navbar-brand {
+    color: white !important;
+}
+.fondo_invert .card {
+    color: white !important; 
+}
+
+.fondo_invert .navbar-toggler-icon {
+    background-color: white !important; 
+}
+input[type="radio"] {
+    display: none;
+}
+label{
+    font-size: 18px;
+}
+label.radio_menu {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #0000002d;
+    border-radius: 5px;
+    border: 2px;
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #ffd900;
+    color: #000;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+label.radio_menu:hover {
+    background-color: #00000044;
+    
+}
+.nav_boton{
+    background-color: #333;
+    color: white;
+}
+.nav_boton:hover{
+    background-color: #FFD700;
+}
+.fondo_info{
+    background-color: #ffffff6c;
+    border-radius: 10px;
+    transition: opacity 0.5s;
+    transition-delay: 0.5s;
+}
+
+.link_card{
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+.link_card:hover{
+    background-color: #FFD700;
+    color: black;
+}
+
